@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 128px;
+    height: 100vh;
+    padding: 32px 0px;
+}
+
+.display {
+    font-size: 32px;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 128px;
+    flex-wrap: wrap;
+}
+
+button {
+    flex: 1;
+    padding: 32px 64px;
+    font-size: 22px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    gap: 128px;
+    text-align: center;
+}
+
+.playerscore {
+    justify-content: flex-start;
+}
+
+.computerscore {
+    justify-content: flex-end;
+}

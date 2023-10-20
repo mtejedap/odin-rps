@@ -8,53 +8,95 @@ function getComputerChoice() {
 
 function play(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() == "ROCK") {
+        const display = document.querySelector(".display");
+        const playerScoreDisplay = document.querySelector(".playerscore");
+        const computerScoreDisplay = document.querySelector(".computerscore");
         switch(computerSelection.toUpperCase()) {
             case "ROCK":
-                return "Draw";
+                display.textContent = "Draw";
+                break;
             case "PAPER":
+                display.textContent = "You Lose! Paper beats Rock";
                 computerScore++;
-                return "You Lose! Paper beats Rock";
+                computerScoreDisplay.textContent = "Computer Score: " + computerScore;
+                break;
             case "SCISSORS":
+                display.textContent = "You Win! Rock beats Scissors";
                 playerScore++;
-                return "You Win! Rock beats Scissors"
+                playerScoreDisplay.textContent = "Player Score: " + playerScore;
+                break;
         }
     } else if (playerSelection.toUpperCase() == "PAPER") {
+        const display = document.querySelector(".display");
+        const playerScoreDisplay = document.querySelector(".playerscore");
+        const computerScoreDisplay = document.querySelector(".computerscore");
         switch(computerSelection.toUpperCase()) {
             case "ROCK":
+                display.textContent = "You Win! Paper beats Rock";
                 playerScore++;
-                return "You Win! Paper beats Rock";
+                playerScoreDisplay.textContent = "Player Score: " + playerScore;
+                break;
             case "PAPER":
-                return "Draw";
+                display.textContent = "Draw";
+                break;
             case "SCISSORS":
+                display.textContent = "You Lose! Scissors beats Paper";
                 computerScore++;
-                return "You Lose! Scissors beats Paper";
+                computerScoreDisplay.textContent = "Computer Score: " + computerScore;
+                break;
         }
     } else if (playerSelection.toUpperCase() == "SCISSORS") {
+        const display = document.querySelector(".display");
+        const playerScoreDisplay = document.querySelector(".playerscore");
+        const computerScoreDisplay = document.querySelector(".computerscore");
         switch(computerSelection.toUpperCase()) {
             case "ROCK":
+                display.textContent = "You Lose! Rock beats Scissors";
                 computerScore++;
-                return "You Lose! Rock beats Scissors";
+                computerScoreDisplay.textContent = "Computer Score: " + computerScore;
+                break;
             case "PAPER":
+                display.textContent = "You Win! Scissors beats Paper";
                 playerScore++;
-                return "You Win! Scissors beats Paper";
+                playerScoreDisplay.textContent = "Player Score: " + playerScore;
+                break;
             case "SCISSORS":
-                return "Draw";
+                display.textContent = "Draw";
+                break;
         }
     }
+    if (playerScore == 5) {
+        const display = document.querySelector(".display");
+        const playerScoreDisplay = document.querySelector(".playerscore");
+        const computerScoreDisplay = document.querySelector(".computerscore");
+        display.textContent = "Player Wins";
+        playerScoreDisplay.textContent = "Player Score: 0";
+        computerScoreDisplay.textContent = "Computer Score: 0";
+        playerScore = 0;
+        computerScore = 0;
+    } else if (computerScore == 5) {
+        const display = document.querySelector(".display");
+        const playerScoreDisplay = document.querySelector(".playerscore");
+        const computerScoreDisplay = document.querySelector(".computerscore");
+        display.textContent = "Computer Wins";
+        playerScoreDisplay.textContent = "Player Score: 0";
+        computerScoreDisplay.textContent = "Computer Score: 0";
+        playerScore = 0;
+        computerScore = 0;
+    }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Please enter your move here");
-        console.log(play(playerSelection, getComputerChoice()));
-    }
-    if (playerScore > computerScore) {
-        console.log("Player Wins");
-    } else if (playerScore < computerScore) {
-        console.log("Computer Wins");
-    } else {
-        console.log("Game Draw");
-    }
-}
+const rockButton = document.querySelector(".rock");
+rockButton.addEventListener("click", function() {
+    play("rock", getComputerChoice())
+});
 
-game();
+const paperButton = document.querySelector(".paper");
+paperButton.addEventListener("click", function() {
+    play("paper", getComputerChoice())
+});
+
+const scissorsButton = document.querySelector(".scissors");
+scissorsButton.addEventListener("click", function() {
+    play("scissors", getComputerChoice())
+});
